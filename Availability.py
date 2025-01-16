@@ -15,7 +15,7 @@ st.set_page_config(
 def main_page():
     guest_rooms = {
         'Red Rock Guest': [f'Room {no}' for no in range(101, 114) if not no in (106, 112)],
-        'Lake View': ['Room 106', 'Room 112'],
+        'Lake View': ['Room 106', 'Room 107','Room 108','Room 109'],
         'Red Rock Home Stay': ['Full House']}
     all_rooms = [room for rooms in guest_rooms.values() for room in rooms]
 
