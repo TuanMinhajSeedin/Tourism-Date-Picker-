@@ -63,7 +63,13 @@ def main_page():
         </style>
     """, unsafe_allow_html=True)
 
-    st.dataframe(available_df, width=2000)
+    # st.dataframe(available_df, width=2000)
+    user = st.session_state['user']
+    
+    if user != 'dinesh':
+        st.dataframe(available_df.fillna(""), width=2000)
+    else:
+        st.dataframe(available_df[available_df['Guest']=='Red Rock Guest'].fillna(""), width=2000)
     
 
 
@@ -71,4 +77,8 @@ def main_page():
 if 'logged_in' in st.session_state and st.session_state['logged_in']:
     main_page()
 else:
-    login()
+    if 'logged_in' not in st.session_state:
+        st.session_state.logged_in = False
+
+    if not st.session_state.logged_in:
+        login()  # Call the login function
