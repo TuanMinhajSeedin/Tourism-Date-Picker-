@@ -43,15 +43,15 @@ else:
     col1, col2 = st.columns((0.3, 0.7))
 
     guest_rooms = {
-        'Red Rock Guest': [f'Room {no}' for no in range(100, 114) if not no in (106, 112)],
-        'Lake View': ['Room 106', 'Room 112'],
+        'Red Rock Guest': [f'Room {no}' for no in range(101, 114) if not no in (106, 112)],
+        'Lake View': ['Room 106', 'Room 107','Room 108','Room 109'],
         'Red Rock Home Stay': ['Full House']
     }
 
     data = {
         'Date': ['2025-01-01', '2025-01-01', '2025-01-03'],
         'Guest': ['Red Rock Guest', 'Lake View', 'Red Rock Home Stay'],
-        'Rooms': ['Room 100', 'Room 106', 'Full House']
+        'Rooms': ['Room 101', 'Room 106', 'Full House']
     }
 
 
@@ -96,7 +96,7 @@ else:
                 else:
                     if new_date and new_guest and new_rooms:
                         # Create a new record
-                        new_record = pd.DataFrame({'Date': [new_date], 'Guest': new_guest, 'Rooms': [', '.join(new_rooms)], 'Booked by': [st.session_state['user']], 'Booked Time': datetime.now()})
+                        new_record = pd.DataFrame({'Date': [new_date], 'Guest': new_guest, 'Rooms': [', '.join(new_rooms)], 'Booked by': [st.session_state['user']], 'Booked Time': datetime.now().date()})
                         
                         # Check if an exact record already exists
                         if not df[
